@@ -40,7 +40,7 @@ body {
 
 @keyframes typewriter {
   from {
-    width: 0;
+    width: 0em;
   }
   to {
     width: 18em;
@@ -90,6 +90,7 @@ nav #brand a {
 }
 
 nav #brand a:hover {
+  color: #8080f8;
   text-decoration: none;
 }
 
@@ -509,4 +510,65 @@ h6 {
 
 .image {
   background: url(https://i.redd.it/5t2g6xuspp521.jpg) no-repeat 50% 20%;
+}
+
+/*--------------skill page----------------*/
+
+table {
+  border: 1px #000000 solid;
+  border-collapse: collapse;
+  table-layout: auto;
+  width: 70%;
+  margin-top: 5%;
+  padding-left: 10%;
+  padding-right: 10%;
+  margin-bottom: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 0px 10px black;
+  background: #e2e8f0;
+}
+.btn {
+  background: #e2e8f0 !important;
+}
+form {
+  width: 75%;
+  margin: auto;
+  margin-top: 0vh;
+  padding-top: 15vh;
+  margin-bottom: 2vh;
+  z-index: 2;
+  font-size: 4vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+#skills-table {
+  width: 75%;
+  font-size: min(3vh, 3vw);
+  margin-top: 4vh;
+}
+
+#my-table th,
+#my-table td {
+  border: solid 2px gray;
+  text-align: center;
+  padding: 2vh;
+}
+#my-table tr:nth-child(even) {
+  background-color: #e2e8f0;
+  color: #212529;
+}
+#my-table tr:nth-child(odd) {
+  background-color: #e2e8f0;
+  color: #212529;
+}
+#my-table tr th {
+  background-color: #e2e8f0;
+}
+#my-table caption {
+  caption-side: top;
+  text-align: center;
+  color: #e2e8f0;
+  margin-top: 10%;
+  font-size: 3vh;
 }
