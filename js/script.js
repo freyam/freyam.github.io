@@ -14,25 +14,26 @@ function PushDataToTable(event) {
         skill: "",
         expertise: ""
     };
-    row_data.name = document.getElementById("name").value;
-    row_data.skill = document.getElementById("skill").value;
+
     row_data.expertise = document.getElementById("expertise").value;
 
-    if (row_data.expertise == "Choose an Option")
-    {
-        alert("Please Choose an Option!")
+    var expertise_flag = (row_data.expertise == "Choose an Option");
+
+    if(expertise_flag == true) {
+        alert("Select the Expertise Level!")
         return false;
     }
 
+    row_data.name = document.getElementById("name").value;
+    row_data.skill = document.getElementById("skill").value;
+
     document.getElementById("skills").reset();
 
-    let localStorage_data_storage = localStorage.getItem("table-data") || "[]";
-    let local_data = JSON.parse(localStorage_data_storage);
+    let local_data = JSON.parse(localStorage.getItem("table-data") || "[]");
 
     local_data.push(row_data);
 
-    let new_data_string = JSON.stringify(local_data);
-    localStorage.setItem("table-data", new_data_string);
+    localStorage.setItem("table-data", JSON.stringify(local_data));
 
     local_table = document.getElementById("skills-table");
     local_table.innerHTML = "";
@@ -58,17 +59,6 @@ function ShowTable() {
 window.onload = function() {
     ShowTable();
 };
-
-
-function navChange(id) {
-  document.getElementById(id).style.color = "#8080f8";
-  document.getElementById(id).style.transition = "color 7 50ms ease";
-}
-
-function navRevert(id) {
-  document.getElementById(id).style.color = "#e2e8f0";
-  document.getElementById(id).style.transition = "color 750ms ease";
-}
 
 var navbar_menu = document.getElementsByClassName("navigation-links");
 
