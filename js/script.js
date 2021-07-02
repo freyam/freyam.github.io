@@ -1,55 +1,64 @@
-window.onload = function() {
-  ShowTable();
-};
+document.getElementById("nav-bar").style.position = "fixed";
+document.getElementById("nav-bar").style.top = "0px";
 
 var idx = 0;
 
-function CycleImages(img) {
+function CycleImages() {
     idx = (idx + 1) % 5;
-    var next_img = "../img/doggo" + idx + ".jpg";
-    console.log("Cuurent -> " + img)
-    console.log("Next -> " + next_img)
-    document.getElementById("carousel").src = next_img;
+    document.getElementById("carousel").src = "../img/doggo" + idx + ".jpg";
 }
 
 function PushDataToTable(event) {
-    let table_entry = {
+    let row_data = {
         name: "",
         skill: "",
         expertise: ""
     };
-    table_entry.name = document.getElementById("name").value;
-    table_entry.skill = document.getElementById("skill").value;
-    table_entry.expertise = document.getElementById("expertise").value;
+    row_data.name = document.getElementById("name").value;
+    row_data.skill = document.getElementById("skill").value;
+    row_data.expertise = document.getElementById("expertise").value;
+
+    if (row_data.expertise == "Choose an Option")
+    {
+        alert("Please Choose an Option!")
+        return false;
+    }
 
     document.getElementById("skills").reset();
 
-    let curr_data_string = localStorage.getItem("table-data") || "[]";
-    let curr_data = JSON.parse(curr_data_string);
+    let localStorage_data_storage = localStorage.getItem("table-data") || "[]";
+    let local_data = JSON.parse(localStorage_data_storage);
 
-    curr_data.push(table_entry);
+    local_data.push(row_data);
 
-    let new_data_string = JSON.stringify(curr_data);
+    let new_data_string = JSON.stringify(local_data);
     localStorage.setItem("table-data", new_data_string);
 
-    currentTable = document.getElementById("skills-table");
-    currentTable.innerHTML = "";
+    local_table = document.getElementById("skills-table");
+    local_table.innerHTML = "";
 
-    curr_data.forEach((element) => {
-        currentTable.innerHTML += `<tr><td>${element.name}</td><td>${element.skill}</td><td>${element.expertise}</td>`;
+    local_data.forEach((record) => {
+        local_table.innerHTML += `<tr><td>${record.name}</td><td>${record.skill}</td><td>${record.expertise}</td>`;
     });
+
     event.preventDefault();
 }
 
+
 function ShowTable() {
-    let curr_data_string = localStorage.getItem("table-data") || "[]";
-    let curr_data = JSON.parse(curr_data_string);
-    currentTable = document.getElementById("skills-table");
-    currentTable.innerHTML = "";
-    curr_data.forEach((element) => {
-        currentTable.innerHTML += `<tr><td>${element.name}</td><td>${element.skill}</td><td>${element.expertise}</td>`;
+    local_table = document.getElementById("skills-table");
+    local_table.innerHTML = "";
+
+    let local_data = JSON.parse(localStorage.getItem("table-data") || "[]");
+    local_data.forEach((record) => {
+        local_table.innerHTML += `<tr><td>${record.name}</td><td>${record.skill}</td><td>${record.expertise}</td>`;
     });
 }
+
+window.onload = function() {
+    ShowTable();
+};
+
 
 function navChange(id) {
   document.getElementById(id).style.color = "#8080f8";
@@ -61,31 +70,22 @@ function navRevert(id) {
   document.getElementById(id).style.transition = "color 750ms ease";
 }
 
-// $(document).ready(
-//     function() {
-//         $(".el a").hover(function() {
-//             $(this).css("color", "#8080f8");
-//         }, function() {
-//             $(this).css("color", "#e2e8f0");
-//         });
-//     });
+var navbar_menu = document.getElementsByClassName("navigation-links");
 
-
-var nav_links = document.getElementsByClassName("navigation-links");
-
-var hoverLink = function() {
+var howerTowards = function() {
     this.style.color = "#8080F8";
+    this.style.transition = "color 7 500ms ease";
 }
 
-var hoverOut = function() {
+var howerAway = function() {
     this.style.color = "#E2E8F0";
-}
-for (var i = 0; i < nav_links.length; i++) {
-    nav_links[i].addEventListener('mouseover', hoverLink);
+    this.style.transition = "color 7 500ms ease";
 }
 
-for (var i = 0; i < nav_links.length; i++) {
-    nav_links[i].addEventListener('mouseout', hoverOut);
+for (var i = 0; i < navbar_menu.length; i++) {
+    navbar_menu[i].addEventListener('mouseover', howerTowards);
 }
-document.getElementById("nav-bar").style.position = "fixed";
-document.getElementById("nav-bar").style.top = "0px";
+
+for (var i = 0; i < navbar_menu.length; i++) {
+    navbar_menu[i].addEventListener('mouseout', howerAway);
+}
