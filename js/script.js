@@ -71,14 +71,14 @@ function navRevert(id) {
 //     });
 
 
-var nav_links = document.getElementsByClassName("navigation-link");
+var nav_links = document.getElementsByClassName("navigation-links");
 
 var hoverLink = function() {
-    this.style.color = "#8fbcbb";
+    this.style.color = "#8080F8";
 }
 
 var hoverOut = function() {
-    this.style.color = "grey";
+    this.style.color = "#E2E8F0";
 }
 for (var i = 0; i < nav_links.length; i++) {
     nav_links[i].addEventListener('mouseover', hoverLink);
@@ -88,4 +88,4 @@ for (var i = 0; i < nav_links.length; i++) {
     nav_links[i].addEventListener('mouseout', hoverOut);
 }
 document.getElementById("nav-bar").style.position = "fixed";
-document.getElementById("nav-bar").style.top = "0";
+document.getElementById("nav-bar").style.top = "0px";
