@@ -69,3 +69,23 @@ function navRevert(id) {
 //             $(this).css("color", "#e2e8f0");
 //         });
 //     });
+
+
+var nav_links = document.getElementsByClassName("navigation-link");
+
+var hoverLink = function() {
+    this.style.color = "#8fbcbb";
+}
+
+var hoverOut = function() {
+    this.style.color = "grey";
+}
+for (var i = 0; i < nav_links.length; i++) {
+    nav_links[i].addEventListener('mouseover', hoverLink);
+}
+
+for (var i = 0; i < nav_links.length; i++) {
+    nav_links[i].addEventListener('mouseout', hoverOut);
+}
+document.getElementById("nav-bar").style.position = "fixed";
+document.getElementById("nav-bar").style.top = "0";

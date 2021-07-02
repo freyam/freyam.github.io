@@ -95,9 +95,8 @@ nav #brand a:hover {
 }
 
 nav #menu {
-  float: left;
-  right: 80px;
-  position: fixed;
+  float: right;
+  margin-right: 50px;
 }
 
 nav #menu li {
