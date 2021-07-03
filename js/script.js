@@ -5,7 +5,7 @@ var idx = 0;
 
 function CycleImages() {
     idx = (idx + 1) % 5;
-    document.getElementById("carousel").src = "../images/doggo" + idx + ".jpg";
+    document.getElementById("carousel").src = "../img/doggo" + idx + ".jpg";
 }
 
 function PushDataToTable(event) {
